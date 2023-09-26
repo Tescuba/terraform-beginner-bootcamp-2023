@@ -2,6 +2,16 @@
 
 ## Table of Contents
 
+![Architect Diagram](C:\Users\selam\OneDrive\Desktop\Terraform-Bootcamp\Architectural Diagram.png)
+- 
+## Weekly Journals
+- [Week 0 Journal](journal/week0.md)
+
+## Extras
+- [Github Markdown TOC Generator](http://ecotrust-canada.github.io/markdown-toc/)
+
+
+
 ## Semantic Versioning :mage:
 
 This project is going utilize semantic versioning for its tagging.
