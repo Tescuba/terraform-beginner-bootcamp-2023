@@ -14,7 +14,7 @@ PROJECT_ROOT
 └── README.md               # required for root modules
 ```
 
-Standard Module Structure
+[Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
 
 ## Terraform and Input Variables
 ### Terraform Cloud Variables
