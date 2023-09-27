@@ -28,7 +28,7 @@ We can set Terraform Cloud variables to be sensitive so they are not shown visib
 
 ### Loading Terraform Input Variables
 
-[Terraform Input Variables]
+[Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
 
 ### var flag
 
@@ -38,7 +38,7 @@ We can use the `-var` flag to set an input variable or override a variable in th
 
 - TODO: document this flag
 
-### terraform.tvfars
+### terraform.tfvars
 
 This is the default file to load in terraform variables in blunk
 
