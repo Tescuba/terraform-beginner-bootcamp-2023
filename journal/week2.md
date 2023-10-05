@@ -4,7 +4,7 @@
 
 ### Bundler
 
-Bundler is a package manager for runy. 
+Bundler is a package manager for ruby. 
 It is the primary way to install ruby packages (known as gems) for ruby.
 
 #### Install Gems
