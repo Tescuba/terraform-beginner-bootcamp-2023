@@ -5,49 +5,73 @@ terraform {
       version = "1.0.0"
     }
   }
-  # backend "remote" {
-  #   hostname = "app.terraform.io"
-  #   organization = "ExamPro0923"
+  #backend "remote" {
+  #  hostname = "app.terraform.io"
+  #  organization = "Exmpro0923"
 
-  #   workspaces {
-  #     name = "terra-house-1"
-  #   }
-  # }
-  # cloud {
-  #   organization = "Exmpro0923"
-  #   workspaces {
-  #     name = "terra-house-1"
-  #   }
-  # }
+  #  workspaces {
+  #    name = "terra-house-1"
+  #  }
+  #}
+  cloud {
+    organization = "Exmpro0923"
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
 
 }
 
 provider "terratowns" {
   endpoint = var.terratowns_endpoint
-  user_uuid = var.teacherseat_user_uuid 
+  user_uuid = var.teacherseat_user_uuid
   token = var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+module "home_arcanum_hosting" {
+  source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.arcanum.public_path
+  content_version = var.arcanum.content_version
 }
 
-resource "terratowns_home" "home" {
-  name = "How to play Arcanum in 2023!"
+resource "terratowns_home" "home_arcanum" {
+  name = "The untouched diving paradise of the Eritrean Red Sea!"
   description = <<DESCRIPTION
-Arcanum is a game from 2001 that shipped with alot of bugs.
-Modders have removed all the originals making this game really fun
-to play (despite that old look graphics). This is my guide that will
-show you how to play arcanum without spoiling the plot.
+The Eritrean marine resources are vastly distributed within the long coast and 
+below the beautifully and carefully preserved sea. As a continuation to the first 
+part of Eritrea’s marine resources, this section gives details about the coral reefs, 
+bird life, sea turtles, vegetation, tourism prospects and more.
+
+Marine experts say that coral reefs are shallow tropical water ecosystems largely
+restricted to areas between 30°N and 30°S latitudes. Coral reefs rank among the most
+biologically productive and diverse of all natural ecosystems. Living coral reefs support
+thousands of species including crustaceans, fishes, sponges, algae and molluscs. 
+For centuries coral reefs have formed a vital component of coastal economies in many tropical countries.
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
-  #domain_name = "3fafa3.cloudfront.net"
-  town = "missingo"
-  content_version = 1
+  domain_name = module.home_arcanum_hosting.domain_name
+  town = "the-nomad-pad"
+  content_version = var.arcanum.content_version
+}
+
+module "home_payday_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.payday.public_path
+  content_version = var.payday.content_version
+}
+
+resource "terratowns_home" "home_payday" {
+  name = "Eritrea’s Red Sea: Worth Exploring, Worth Investing In."
+  description = <<DESCRIPTION
+There are more than 600 fish species found in the Eritrean Red Sea. 
+The commercially important ones can be categorized into five groups. 
+These are Demersal Pelagic, Ornamental, Crustacean, and Cephalopods. 
+Based on this classification, there are 104 Demersal, 79 Ornamental, 
+26 Pelagic, 2 Crustacean, and 2 Cephalopod species both for local and 
+export market utilization
+DESCRIPTION
+  domain_name = module.home_payday_hosting.domain_name
+  town = "the-nomad-pad"
+  content_version = var.payday.content_version
 }
