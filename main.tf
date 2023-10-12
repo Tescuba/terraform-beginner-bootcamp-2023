@@ -5,14 +5,14 @@ terraform {
       version = "1.0.0"
     }
   }
-  # backend "remote" {
-  #   hostname = "app.terraform.io"
-  #   organization = "ExamPro0923"
+  #backend "remote" {
+  #  hostname = "app.terraform.io"
+  #  organization = "Exmpro0923"
 
-  #   workspaces {
-  #     name = "terra-house-1"
-  #   }
-  # }
+  #  workspaces {
+  #    name = "terra-house-1"
+  #  }
+  #}
   cloud {
     organization = "Exmpro0923"
     workspaces {
@@ -24,7 +24,7 @@ terraform {
 
 provider "terratowns" {
   endpoint = var.terratowns_endpoint
-  user_uuid = var.teacherseat_user_uuid 
+  user_uuid = var.teacherseat_user_uuid
   token = var.terratowns_access_token
 }
 
@@ -36,15 +36,21 @@ module "home_arcanum_hosting" {
 }
 
 resource "terratowns_home" "home_arcanum" {
-  name = "How to play Arcanum in 2023!"
+  name = "The untouched diving paradise of the Eritrean Red Sea!"
   description = <<DESCRIPTION
-Arcanum is a game from 2001 that shipped with alot of bugs.
-Modders have removed all the originals making this game really fun
-to play (despite that old look graphics). This is my guide that will
-show you how to play arcanum without spoiling the plot.
+The Eritrean marine resources are vastly distributed within the long coast and 
+below the beautifully and carefully preserved sea. As a continuation to the first 
+part of Eritrea’s marine resources, this section gives details about the coral reefs, 
+bird life, sea turtles, vegetation, tourism prospects and more.
+
+Marine experts say that coral reefs are shallow tropical water ecosystems largely
+restricted to areas between 30°N and 30°S latitudes. Coral reefs rank among the most
+biologically productive and diverse of all natural ecosystems. Living coral reefs support
+thousands of species including crustaceans, fishes, sponges, algae and molluscs. 
+For centuries coral reefs have formed a vital component of coastal economies in many tropical countries.
 DESCRIPTION
   domain_name = module.home_arcanum_hosting.domain_name
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.arcanum.content_version
 }
 
@@ -56,13 +62,16 @@ module "home_payday_hosting" {
 }
 
 resource "terratowns_home" "home_payday" {
-  name = "Making your Payday Bar!"
+  name = "Eritrea’s Red Sea: Worth Exploring, Worth Investing In."
   description = <<DESCRIPTION
-Since I really like Payday candy bars but they cost so much to import
-into canada, I decided I would see how I could my own Paydays bars,
-and if they are most cost effective.
+There are more than 600 fish species found in the Eritrean Red Sea. 
+The commercially important ones can be categorized into five groups. 
+These are Demersal Pelagic, Ornamental, Crustacean, and Cephalopods. 
+Based on this classification, there are 104 Demersal, 79 Ornamental, 
+26 Pelagic, 2 Crustacean, and 2 Cephalopod species both for local and 
+export market utilization
 DESCRIPTION
   domain_name = module.home_payday_hosting.domain_name
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.payday.content_version
 }
